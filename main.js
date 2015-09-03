@@ -25,7 +25,12 @@ $(function() {
   })
 
   $('#media-list').on('click', '.play', function() {
+    if($(this).closest('tr').hasClass('success')) {
+      return;
+    }
     $('#player').attr('src', $(this).data('src'));
+    $('.success').removeClass('success');
+    $(this).closest('tr').addClass('success');
     $('#player').get(0).play();
   })
 
