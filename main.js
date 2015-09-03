@@ -15,21 +15,42 @@ for (var i = 1; i <= 10; i++) {
 }
 
 $(function() {
-
   data.forEach(function(item, idx) {
     var tr = $('<tr/>');
     $('<td>').html(idx + 1).appendTo(tr);
     $('<td>').html(item.title).appendTo(tr);
     $('<td>').html('<a class="play" data-src="'+item.path+'">播放</a>').appendTo(tr);
     $('<td>').html('<a href="'+item.path+'">下载</a>').appendTo(tr);
-    // tr.append('<td>').html(item.title);
-    // tr.append('<td>').html('<a>');
     tr.appendTo('#media-list');
   })
 
   $('#media-list').on('click', '.play', function() {
     $('#player').attr('src', $(this).data('src'));
     $('#player').get(0).play();
-    console.log($(this).data('src'));
   })
+
+  $('#player').on('loadstart', function() {
+    $('#status').html('loadstart');
+  })
+
+  $('#player').on('progress', function() {
+    $('#status').html('progress');
+  })
+
+  $('#player').on('play', function() {
+    $('#status').html('play');
+  })
+
+  $('#player').on('playing', function() {
+    $('#status').html('playing');
+  })
+
+  $('#player').on('ended', function() {
+    $('#status').html('ended');
+  })
+
+  $('#player').on('pause', function() {
+    $('#status').html('pause');
+  })
+
 })
