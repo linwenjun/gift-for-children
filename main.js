@@ -15,7 +15,7 @@ for (var i = 1; i <= 10; i++) {
 }
 
 $(function() {
-  $('#player').get(0).play();
+  // $('#player').get(0).play();
 
   data.forEach(function(item, idx) {
     // $('<div/>').addClass('media-button').html(item.title).data('src', item.path).appendTo(container);
