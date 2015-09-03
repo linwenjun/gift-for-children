@@ -15,10 +15,19 @@
   <div class="container">
     <div class="panel panel-primary">
       <div class="panel-heading">单击可以播放</div>
-      <div id="media-list" class="panel-body row">
-        <div class="col-md-12">
-          <audio id="player" src="2012-english-mp3/m1_unit1.mp3" controls="true" />
-        </div>
+      <div class="panel-body row">
+        <audio id="player" src="2012-english-mp3/m1_unit1.mp3" controls="true"></audio>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>章节</th>
+              <th>播放</th>
+              <th>右键下载</th>
+            </tr>
+          </thead>
+          <tbody id="media-list"></tbody>
+        </table>
       </div>
     </div>
   </div>

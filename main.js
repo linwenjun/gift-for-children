@@ -15,13 +15,21 @@ for (var i = 1; i <= 10; i++) {
 }
 
 $(function() {
-  data.forEach(function(item) {
-    var container = $('<a>').addClass('col-md-4');
-    $('<div/>').addClass('media-button').html(item.title).data('src', item.path).appendTo(container)
-    container.appendTo('#media-list');
+  data.forEach(function(item, idx) {
+    // $('<div/>').addClass('media-button').html(item.title).data('src', item.path).appendTo(container);
+    // $('<a/>').html('下载').attr('src', item.path).appendTo(container);
+    // container.appendTo('#media-list');
+    var tr = $('<tr/>');
+    $('<td>').html(idx + 1).appendTo(tr);
+    $('<td>').html(item.title).appendTo(tr);
+    $('<td>').html('<a class="play" data-src="'+item.path+'">播放</a>').appendTo(tr);
+    $('<td>').html('<a href="'+item.path+'">右键下载</a>').appendTo(tr);
+    // tr.append('<td>').html(item.title);
+    // tr.append('<td>').html('<a>');
+    tr.appendTo('#media-list');
   })
 
-  $('#media-list').on('click', '.media-button', function() {
+  $('#media-list').on('click', '.play', function() {
     $('#player').attr('src', $(this).data('src'));
     $('#player').get(0).play();
     console.log($(this).data('src'));
