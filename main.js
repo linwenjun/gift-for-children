@@ -13,9 +13,17 @@ for (var i = 1; i <= 10; i++) {
     path: "2012-english-mp3/m" + i + "_words.mp3"
   });
 }
-console.log(data);
+
 $(function() {
   data.forEach(function(item) {
-    $('#media-list').append('<tr><td>' + item.title + '</td><td><audio src="' + item.path + '" controls="true" /></td></tr>')
+    var container = $('<a>').addClass('col-md-4');
+    $('<div/>').addClass('media-button').html(item.title).data('src', item.path).appendTo(container)
+    container.appendTo('#media-list');
+  })
+
+  $('#media-list').on('click', '.media-button', function() {
+    $('#player').attr('src', $(this).data('src'));
+    $('#player').get(0).play();
+    console.log($(this).data('src'));
   })
 })

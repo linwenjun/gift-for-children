@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>2005级4班</title>
   <link rel="stylesheet" href="dist/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css">
   <script src="dist/jquery.min.js"></script>
   <script src="main.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,20 +13,14 @@
 
 <body>
   <div class="container">
-    <div class="row">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>名称</th>
-            <th>播放</th>
-          </tr>
-
-        </thead>
-        <tbody id="media-list">
-        </tbody>
-      </table>
+    <div class="panel panel-primary">
+      <div class="panel-heading">单击可以播放</div>
+      <div id="media-list" class="panel-body row">
+        <div class="col-md-12">
+          <audio id="player" src="2012-english-mp3/m1_unit1.mp3" controls="true" />
+        </div>
+      </div>
     </div>
-
   </div>
 
 </body>
