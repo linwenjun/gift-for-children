@@ -1,4 +1,5 @@
 var data = [];
+var currentIdx = -1;
 for (var i = 1; i <= 10; i++) {
   data.push({
     title: "Module " + i + " Unit 1",
@@ -14,24 +15,33 @@ for (var i = 1; i <= 10; i++) {
   });
 }
 
+
+
+function play(i) {
+  console.log(i);
+  var i = i || 0;
+  if (currentIdx === i) {
+    return;
+  }
+  currentIdx = i;
+  $('#media-list tr.success').removeClass('success');
+  $('#media-list tr').eq(i).addClass('success');
+  $('#player').attr('src', data[currentIdx].path);
+  $('#player').get(0).play();
+}
+
 $(function() {
   data.forEach(function(item, idx) {
     var tr = $('<tr/>');
     $('<td>').html(idx + 1).appendTo(tr);
     $('<td>').html(item.title).appendTo(tr);
-    $('<td>').html('<a class="play" data-src="'+item.path+'">播放</a>').appendTo(tr);
-    $('<td>').html('<a href="'+item.path+'">下载</a>').appendTo(tr);
+    $('<td>').html('<a class="play">播放</a>').appendTo(tr);
+    $('<td>').html('<a href="' + item.path + '">下载</a>').appendTo(tr);
     tr.appendTo('#media-list');
   })
 
   $('#media-list').on('click', '.play', function() {
-    if($(this).closest('tr').hasClass('success')) {
-      return;
-    }
-    $('#player').attr('src', $(this).data('src'));
-    $('.success').removeClass('success');
-    $(this).closest('tr').addClass('success');
-    $('#player').get(0).play();
+    play($(this).closest('tr').index());
   })
 
   $('#player').on('loadstart', function() {
@@ -51,11 +61,12 @@ $(function() {
   })
 
   $('#player').on('ended', function() {
-    $('#status').html('ended');
+    var idx = currentIdx + 1;
+    idx %= data.length;
+    play(idx);
   })
 
   $('#player').on('pause', function() {
     $('#status').html('pause');
   })
-
 })
