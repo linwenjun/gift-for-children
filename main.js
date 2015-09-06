@@ -44,29 +44,37 @@ $(function() {
     play($(this).closest('tr').index());
   })
 
-  $('#player').on('loadstart', function() {
-    $('#status').html('loadstart');
+  var eventList = [
+    'abort',
+    'canplay',
+    'canplaythrough',
+    'durationchange',
+    'emptied',
+    'ended',
+    'error',
+    'loadeddata',
+    'loadedmetadata',
+    'loadstart',
+    'pause',
+    'play',
+    'playing',
+    'progress',
+    'ratechange',
+    'seeked',
+    'seeking',
+    'stalled',
+    'suspend',
+    'timeupdate',
+    'volumechange',
+    'waitin'
+  ]
+
+  eventList.forEach(function(item) {
+    $('#player').on(item, function() {
+      console.log(this.buffered.start(0));
+      console.log(this.buffered.end(0));
+    })
   })
 
-  $('#player').on('progress', function() {
-    $('#status').html('progress');
-  })
 
-  $('#player').on('play', function() {
-    $('#status').html('play');
-  })
-
-  $('#player').on('playing', function() {
-    $('#status').html('playing');
-  })
-
-  $('#player').on('ended', function() {
-    var idx = currentIdx + 1;
-    idx %= data.length;
-    play(idx);
-  })
-
-  $('#player').on('pause', function() {
-    $('#status').html('pause');
-  })
 })
