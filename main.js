@@ -16,8 +16,6 @@ for (var i = 1; i <= 10; i++) {
   });
 }
 
-
-
 function play(i) {
   console.log(i);
   var i = i || 0;
@@ -64,14 +62,16 @@ $(function() {
     'seeked',
     'seeking',
     'stalled',
-    'suspend',
-    'timeupdate',
+    // 'suspend',
+    // 'timeupdate',
     'volumechange',
     'waitin'
   ]
 
   eventList.forEach(function(item) {
     $('#player').on(item, function() {
+      $('#other-info').html(item + '<br />' + parseInt(this.currentTime) + '/' + this.buffered.end(0).toFixed(2));
+
       console.log(this.buffered.start(0));
       console.log(this.buffered.end(0));
     })
