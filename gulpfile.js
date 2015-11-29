@@ -8,8 +8,15 @@ var es = require('event-stream');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
+var sass = require('gulp-sass');
 
-gulp.task('default', function(done) {
+gulp.task('sass', function() {
+  return gulp.src('src/sass/*.sass')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./dist/css'))
+})
+
+gulp.task('script', function(done) {
   glob('src/script/*.js', function(err, files) {
     if(err) done(err);
 
