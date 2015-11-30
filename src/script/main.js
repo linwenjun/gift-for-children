@@ -38,7 +38,7 @@ $(function() {
     $('<td>').html(idx + 1).appendTo(tr);
     $('<td>').html(item.title).appendTo(tr);
     $('<td>').html('<a class="play">播放</a>').appendTo(tr);
-    $('<td>').html('<a href="' + item.path + '">下载</a>').appendTo(tr);
+    // $('<td>').html('<a href="' + item.path + '">下载</a>').appendTo(tr);
     tr.appendTo('#media-list');
   })
 
