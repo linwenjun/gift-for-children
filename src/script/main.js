@@ -80,5 +80,20 @@ $(function() {
     })
   })
 
+  $('.nav-switch').on('click', function() {
+    $('.nav-list').toggleClass('hide');
+  })
+
+  $('.nav-list').on('click', 'li', function() {
+    var target = $(this).data('target');
+    $('.selected').removeClass('selected');
+    $('.card').hide();
+
+    $(this).addClass('selected');
+    $('.' + target).show();
+
+    $('.nav-list').addClass('hide')
+  })
+
 
 })

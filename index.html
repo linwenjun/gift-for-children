@@ -15,22 +15,23 @@
   <nav id="navbar" class="container-fluid">
     <div class="row-header row">
       <div class="col-xs-8"><i class="fa fa-book"> 学习小帮手</i></div>
-      <div class="col-xs-4 text-right"><i class="fa fa-bars btn btn-primary-outline"></i></div>
+      <div class="col-xs-4 text-right nav-switch"><i class="fa fa-bars btn btn-primary-outline"></i></div>
     </div>
-    <ul class="nav-list">
-      <li class="`">英语听力</li>
-      <li class="`">20以内加减法</li>
-      <li class="`">课表</li>
-    </ul>
-
   </nav>
 
+  <ul class="nav-list hide">
+    <li data-target="english-listening" class="selected">英语听力</li>
+    <li data-target="english-listening"  class="">10以内加减法</li>
+    <li data-target="english-listening"  class="">20以内加减法</li>
+    <li data-target="class-schedule"  class="">一年级四班课表</li>
+  </ul>
+
   <div class="container">
-    <div class="card">
+    <div class="card  english-listening">
       <div class="card-header card-primary-fill">
         一年级英语听力
       </div>
-      <div class="card-block">
+      <div class="card-block no-padding">
         <audio id="player" src="2012-english-mp3/m1_unit1.mp3"></audio>
         <div id="status"></div>
         <div id="other-info"></div>
@@ -48,18 +49,19 @@
       </div>
 
     </div>
-    <div class="card">
+
+    <div class="card class-schedule">
       <div class="card-header">2012外教版英语一年级上册</div>
-      <div class="card-block">
+      <div class="card-block no-padding">
         <table class="table table-striped">
           <thead>
             <tr>
               <th>#</th>
-              <th>星期一</th>
-              <th>星期二</th>
-              <th>星期三</th>
-              <th>星期四</th>
-              <th>星期五</th>
+              <th>一</th>
+              <th>二</th>
+              <th>三</th>
+              <th>四</th>
+              <th>五</th>
             </tr>
           </thead>
           <tbody>
@@ -109,7 +111,7 @@
               <td>英语</td>
               <td>体育</td>
               <td>唱游</td>
-              <td>少先队活动课</td>
+              <td>队课</td>
             </tr>
           </tbody>
         </table>

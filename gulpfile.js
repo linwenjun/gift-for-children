@@ -1,43 +1,8 @@
-var gulp = require('gulp');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var babelify = require('babelify');
-var glob = require('glob');
-var rename = require('gulp-rename');
-var es = require('event-stream');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var buffer = require('vinyl-buffer');
-var sass = require('gulp-sass');
+var gulp = require('./gulp')([
+  'browserify',
+  'connect',
+  'sass',
+  'watch'
+]);
 
-gulp.task('sass', function() {
-  return gulp.src('src/sass/*.sass')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist/css'))
-})
-
-gulp.task('script', function(done) {
-  glob('src/script/*.js', function(err, files) {
-    if(err) done(err);
-
-    var tasks = files.map(function(entry) {
-      return browserify({
-          entries: [entry],
-          debug: true
-        })
-        .transform('babelify', {presets: ['es2015']})
-        .bundle()
-        .pipe(source(entry))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('./'))
-        .pipe(rename(function(path) {
-          path.dirname = ""
-          return path;
-        }))
-        .pipe(gulp.dest('dist'));
-    })
-    es.merge(tasks).on('end', done);
-  })
-})
+gulp.task('default', ['watch', 'connect']);

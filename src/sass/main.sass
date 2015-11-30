@@ -1,21 +1,38 @@
 @import "../libs/bootstrap-4.0.0-alpha/scss/bootstrap";
 @import "../../node_modules/font-awesome/scss/font-awesome";
 
+.no-padding
+  padding: 0 !important;
+
 #navbar
   background-color: #1fa67a;
   padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 0px;
   color: #FFF;
 
   .row-header
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 10px;
 
-  .nav-list
+.nav-list
+  overflow: hidden;
+  background-color: #1fa67a;
+  margin: 0;
+  padding: 0;
+  color: #FFF;
+  margin-bottom: 1rem;
+  transition: height 1s;
+  border-bottom: 1px solid #1fa67a;
+  &.hide
+    height: 0;
+  li
     margin: 0;
-    padding: 0;
-    li
-      margin: 0;
-      padding: 10px 0;
-      list-style: none;
+    padding: 5px 10px;
+    list-style: none;
+
+    &.selected
+      background-color: #FFF;
+      color: #1fa67a;
+
+.class-schedule
+  display: none;
