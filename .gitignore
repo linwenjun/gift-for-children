@@ -139,7 +139,7 @@ fabric.properties
 
 
 ### Less ###
-*.css
+# *.css
 
 
 ### Sass ###
