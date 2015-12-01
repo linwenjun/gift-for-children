@@ -145,3 +145,6 @@ fabric.properties
 ### Sass ###
 .sass-cache/
 *.css.map
+
+### third part libs ####
+src/libs
